@@ -18,7 +18,7 @@
       crossorigin="anonymous"
     />
     <!-- Fontawesome CDN goes here -->
-   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
@@ -66,12 +66,35 @@
     <!-- =============Category Section Area ==================-->
     <!-- =============Alert Section Area ==================-->
     <section class="container">
-      <div class="alert alert-light text-black font-extra-bold" role="alert">
+      <div class="alert alert-light text-black font-bold" role="alert">
         <span  id="news-count">0</span> items found for category <span id="news-name"></span>
       </div>
     </section>
     <!-- =============Alert Section Area ==================-->
+    <!-- =============sorting Section Area ==================-->
+    <section class="container d-flex justify-content-between">
 
+      <div class="d-flex justify-content-center align-items-center gap-2">
+        <p class="p-0 m-0">Sort By :</p>
+        <select class="form-select " >
+          <option selected>Default</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+      <div class="p-2">
+        <button class="btn btn-primary m-2">Today's Pick</button>
+        <button class="btn btn-outline-primary">Trending</button>
+      </div>
+    </section>
+    <!-- =============sorting Section Area ==================-->
+    
+    <!-- ============= Cart Section Area  ==================-->
+    <section class="container mt-4" id="all-news">
+     
+    </section>
+    <!-- ============= Cart Section Area  ==================-->
       
 
 

@@ -35,5 +35,58 @@ const getCategoryData = (category_id, category_name) => {
 const showCategoryNews = (data, category_name) => {
   document.getElementById("news-count").innerText = data.length;
   document.getElementById("news-name").innerText = category_name;
-  console.log(data, category_name);
+  let allNews = document.getElementById("all-news");
+
+  //remove all of cart when clickable cart append
+  allNews.innerHTML = "";
+
+  data.forEach((element) => {
+    let newElement = document.createElement("div");
+    newElement.classList.add("card", "mb-3");
+    newElement.innerHTML = `
+        <div class="row g-0">
+          <div class="col-md-4 px-3 py-3">
+            <img src="${
+              element.thumbnail_url
+            }" class="img-fluid W-75 rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body mt-3">
+              <h5 class="card-title ">${element.title}</h5>
+              <p class="card-text">${element.details.slice(0, 150)}</p>
+              
+            </div>
+
+            <div class = "card-footer border-o bg-body d-flex justify-content-between">
+            <div class = "d-flex gap-3">
+            <img src="${
+              element.author.img
+            }" class="  rounded-circle" alt="..." height ="50" width = "50">
+            <div>
+            <p class="m-0 p-0">${element.author.name}</p>
+            <p class="m-0 p-0">${element.author.published_date}</p>
+            </div>
+            </div>
+
+            <div class = "d-flex gap-3">
+            <i class="fa-solid fa-eye"></i>
+                <p class ="m-0 p-0">${element.total_view}</p>
+            </div>
+            <div>
+            <i class="fa-solid fa-star"></i>
+            </div>
+            <div>
+            <i class="fa-solid fa-arrow-right"></i>
+            </div>
+            </div>
+          </div>
+        </div>
+        
+        
+        `;
+
+    allNews.appendChild(newElement);
+
+    console.log(element);
+  });
 };
