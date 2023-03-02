@@ -84,8 +84,8 @@
         </select>
       </div>
       <div class="p-2">
-        <button class="btn btn-primary m-2">Today's Pick</button>
-        <button class="btn btn-outline-primary">Trending</button>
+        <button class="btn btn-primary m-2" onclick="showTodaypicks()">Today's Pick</button>
+        <button class="btn btn-outline-primary" onclick="showTredings()">Trending</button>
       </div>
     </section>
     <!-- =============sorting Section Area ==================-->
@@ -107,7 +107,7 @@
         <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div id="modal-details" class="modal-body">
         
       </div>
       <div class="modal-footer">
