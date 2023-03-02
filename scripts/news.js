@@ -43,40 +43,46 @@ const showCategoryNews = (data, category_name) => {
   data.forEach((element) => {
     let newElement = document.createElement("div");
     newElement.classList.add("card", "mb-3");
+
+    //destrucring object element
+    const { _id, thumbnail_url, title, details, author, total_view } = element;
+
     newElement.innerHTML = `
+
+
+
         <div class="row g-0">
           <div class="col-md-4 px-3 py-3">
-            <img src="${
-              element.thumbnail_url
-            }" class="img-fluid W-75 rounded-start" alt="...">
+            <img src="${thumbnail_url}" class="img-fluid W-75 rounded-start" alt="...">
           </div>
           <div class="col-md-8">
             <div class="card-body mt-3">
-              <h5 class="card-title ">${element.title}</h5>
-              <p class="card-text">${element.details.slice(0, 150)}</p>
+              <h5 class="card-title ">${title}</h5>
+              <p class="card-text">${details.slice(0, 150)}</p>
               
             </div>
 
-            <div class = "card-footer border-o bg-body d-flex justify-content-between">
+            <div class = " mt-5 card-footer border-o bg-body d-flex justify-content-between">
             <div class = "d-flex gap-3">
             <img src="${
-              element.author.img
+              author.img
             }" class="  rounded-circle" alt="..." height ="50" width = "50">
             <div>
-            <p class="m-0 p-0">${element.author.name}</p>
-            <p class="m-0 p-0">${element.author.published_date}</p>
+            <p class="m-0 p-0">${author.name}</p>
+            <p class="m-0 p-0">${author.published_date}</p>
             </div>
             </div>
 
             <div class = "d-flex gap-3">
             <i class="fa-solid fa-eye"></i>
-                <p class ="m-0 p-0">${element.total_view}</p>
+                <p class ="m-0 p-0">${total_view}</p>
             </div>
             <div>
             <i class="fa-solid fa-star"></i>
             </div>
             <div>
-            <i class="fa-solid fa-arrow-right"></i>
+            <i  onclick = "fetchDataDetailsNews('${_id}')" data-bs-toggle="modal" data-bs-target="#exampleModal"  class="fa-solid fa-arrow-right">
+            </i>
             </div>
             </div>
           </div>
@@ -86,7 +92,18 @@ const showCategoryNews = (data, category_name) => {
         `;
 
     allNews.appendChild(newElement);
-
-    console.log(element);
   });
 };
+
+//get data from fetch the link news details
+
+const fetchDataDetailsNews = (news_id) => {
+  const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => showDataModalFetch(data.data));
+};
+
+//show on modal when click arrow button
+
+const showDataModalFetch = (newsDetails) => {};
